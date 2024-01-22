@@ -2,15 +2,15 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using EmailTemplateProvider.Console;
-using System.Net.Http.Headers;
+using Ekzakt.Templates.Console.Utilities;
 
 var services = new ServiceCollection();
-var c = new ConsoleHelpers();
 
 var host = BuildHost(services);
 
 
-TaskRunner runner = new TaskRunner();
+var runner = host.Services.GetRequiredService<TaskRunner>();
+var ch = host.Services.GetRequiredService<ConsoleHelpers>();
 
 
 List<string> taskList = new()
@@ -19,10 +19,9 @@ List<string> taskList = new()
 };
 
 
-
 while (true)
 {
-    var key = runner.WriteTaskList(taskList);
+    var key = ch.WriteTaskList(taskList);
 
     switch (key.Key)
     {
@@ -51,7 +50,8 @@ IHost BuildHost(ServiceCollection serviceCollection)
             )
         .ConfigureServices((context, services) =>
         {
-            //services.AddSomething();
+            services.AddScoped<TaskRunner>();
+            services.AddScoped<ConsoleHelpers>();
         })
         .Build();
 

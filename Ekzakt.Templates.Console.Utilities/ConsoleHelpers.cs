@@ -115,4 +115,30 @@ public class ConsoleHelpers
         return System.Console.ReadLine();
     }
 
+
+    /// <summary>
+    /// Writes a list of taks prefixed by follow-up letter from the 
+    /// alpabet.  Q is preserved for quitting.
+    /// </summary>
+    /// <param name="taskList"></param>
+    /// <returns></returns>
+    public ConsoleKeyInfo WriteTaskList(List<string> taskList)
+    {
+        var alphabet = "ABCDEFGHIJKLMOPRSTUVWXYZ";
+
+        var counter = 0;
+
+        System.Console.Clear();
+
+        foreach (var task in taskList)
+        {
+            System.Console.WriteLine($"{alphabet.Substring(counter, 1)} = {task}");
+            counter++;
+        };
+
+        System.Console.WriteLine($"{ConsoleKey.Q} = Quit.");
+
+        var output = System.Console.ReadKey(true);
+        return output;
+    }
 }
