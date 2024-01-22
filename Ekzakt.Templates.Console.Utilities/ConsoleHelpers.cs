@@ -49,7 +49,7 @@ public class ConsoleHelpers
     {
         var originalColor = System.Console.ForegroundColor;
 
-        System.Console.WriteLine();
+        System.Console.WriteLine("Result:");
         System.Console.ForegroundColor = ConsoleColor.DarkGreen;
         System.Console.WriteLine(message);
         System.Console.WriteLine();
