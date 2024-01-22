@@ -1,6 +1,6 @@
 ﻿using Ekzakt.Templates.Console.Utilities;
 
-namespace EmailTemplateProvider.Console;
+namespace Ekzakt.Templates.Console;
 
 public class TaskRunner(ConsoleHelpers? c)
 {

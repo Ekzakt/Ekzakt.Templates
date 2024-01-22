@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using EmailTemplateProvider.Console;
 using Ekzakt.Templates.Console.Utilities;
+using Ekzakt.Templates.Console;
 
 var services = new ServiceCollection();
 
