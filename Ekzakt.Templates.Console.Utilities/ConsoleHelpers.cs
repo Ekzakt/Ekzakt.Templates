@@ -30,12 +30,24 @@ public class ConsoleHelpers
     /// Writes a Exception in red, followed by an empty line.
     /// </summary>
     /// <param name="ex"></param>
+    [Obsolete("Use generic method WriteError<T> instead.")]
     public void WriteError(Exception ex)
     {
         var originalColor = System.Console.ForegroundColor;
 
         System.Console.ForegroundColor = ConsoleColor.Red;
-        System.Console.WriteLine(ex.ToString());
+        System.Console.WriteLine(WriteJson(ex));
+        System.Console.WriteLine();
+        System.Console.ForegroundColor = originalColor;
+    }
+
+
+    public void WriteError<T>(T obj) where T : class
+    {
+        var originalColor = System.Console.ForegroundColor;
+
+        System.Console.ForegroundColor = ConsoleColor.Red;
+        System.Console.WriteLine(WriteJson(obj));
         System.Console.WriteLine();
         System.Console.ForegroundColor = originalColor;
     }
@@ -45,6 +57,7 @@ public class ConsoleHelpers
     /// Write a message in green, followed by an empty line.
     /// </summary>
     /// <param name="message"></param>
+    [Obsolete("Use WriteSuccess<T> instead.")]
     public void WriteResult(string? message)
     {
         var originalColor = System.Console.ForegroundColor;
@@ -55,6 +68,23 @@ public class ConsoleHelpers
         System.Console.WriteLine();
         System.Console.ForegroundColor = originalColor;
     }
+
+
+
+    /// <summary>
+    /// Write a message in green, followed by an empty line.
+    /// </summary>
+    /// <param name="obj"></param>
+    public void WriteSuccess<T>(T obj) where T : class
+    {
+        var originalColor = System.Console.ForegroundColor;
+
+        System.Console.ForegroundColor = ConsoleColor.DarkGreen;
+        System.Console.WriteLine(WriteJson(obj));
+        System.Console.WriteLine();
+        System.Console.ForegroundColor = originalColor;
+    }
+
 
 
     /// <summary>

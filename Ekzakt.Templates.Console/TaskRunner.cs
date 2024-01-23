@@ -10,6 +10,9 @@ public class TaskRunner(ConsoleHelpers? c)
 
         while (true)
         {
+            c.WriteError("WriteError");
+            c.WriteSuccess("WriteSuccess");
+
             c.Write($"Doing '{nameof(DoSomething)}'.");
             c.Write();
 
