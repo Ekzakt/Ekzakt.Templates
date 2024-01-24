@@ -21,12 +21,12 @@ List<string> taskList = new()
 
 while (true)
 {
-    var key = ch.WriteTaskList(taskList);
+    var key = ch.WriteMenu(taskList, "What do you want to do?");
 
     switch (key.Key)
     {
         case ConsoleKey.A:
-            await runner.DoSomething();
+            await runner.DoSomethingAsync();
             break;
         default:
             break;

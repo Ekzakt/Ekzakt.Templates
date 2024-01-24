@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Runtime.Versioning;
+using System.Text.Json;
 
 namespace Ekzakt.Templates.Console.Utilities;
 
@@ -29,19 +30,7 @@ public class ConsoleHelpers
     /// <summary>
     /// Writes a Exception in red, followed by an empty line.
     /// </summary>
-    /// <param name="ex"></param>
-    [Obsolete("Use generic method WriteError<T> instead.")]
-    public void WriteError(Exception ex)
-    {
-        var originalColor = System.Console.ForegroundColor;
-
-        System.Console.ForegroundColor = ConsoleColor.Red;
-        System.Console.WriteLine(WriteJson(ex));
-        System.Console.WriteLine();
-        System.Console.ForegroundColor = originalColor;
-    }
-
-
+    /// <param name="obj">Beneric</param>
     public void WriteError<T>(T obj) where T : class
     {
         var originalColor = System.Console.ForegroundColor;
@@ -51,24 +40,6 @@ public class ConsoleHelpers
         System.Console.WriteLine();
         System.Console.ForegroundColor = originalColor;
     }
-
-
-    /// <summary>
-    /// Write a message in green, followed by an empty line.
-    /// </summary>
-    /// <param name="message"></param>
-    [Obsolete("Use WriteSuccess<T> instead.")]
-    public void WriteResult(string? message)
-    {
-        var originalColor = System.Console.ForegroundColor;
-
-        System.Console.WriteLine("Result:");
-        System.Console.ForegroundColor = ConsoleColor.DarkGreen;
-        System.Console.WriteLine(message);
-        System.Console.WriteLine();
-        System.Console.ForegroundColor = originalColor;
-    }
-
 
 
     /// <summary>
@@ -122,12 +93,12 @@ public class ConsoleHelpers
     /// <summary>
     /// Write the serialized data of an class, 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="myClass"></param>
+    /// <param name="obj">Generic</param>
+    /// <param name="writeInteded"></param>
     /// <returns></returns>
-    public string? WriteJson<T>(T myClass, bool? writeInteded = true) where T : class
+    public string? WriteJson<T>(T obj, bool? writeInteded = true) where T : class
     {
-        var jsonResult = JsonSerializer.Serialize(myClass, new JsonSerializerOptions
+        var jsonResult = JsonSerializer.Serialize(obj, new JsonSerializerOptions
         {
             WriteIndented = writeInteded ?? true
         });
@@ -147,13 +118,61 @@ public class ConsoleHelpers
 
 
     /// <summary>
+    /// Writes a list of menu items (taks) prefixed by follow-up letter from the 
+    /// alpabet.  Q is preserved for quitting or going to the previous menu.
+    /// </summary>
+    /// <param name="menuItems"></param>
+    /// <param name="title"></param>
+    /// <returns></returns>
+    public ConsoleKeyInfo WriteMenu(List<string> menuItems, string? title = null)
+    {
+        if (menuItems.Count > 25)
+        {
+            WriteError("A maximum of 25 menu items are allowed.");
+        }
+
+        System.Console.Clear();
+
+        if (title != null)
+        {
+            var previousColor = System.Console.ForegroundColor;
+
+            System.Console.ForegroundColor= ConsoleColor.Blue;
+            System.Console.WriteLine(title);
+            System.Console.WriteLine();
+            System.Console.ForegroundColor = previousColor;
+        }
+
+        var alphabet = "ABCDEFGHIJKLMOPRSTUVWXYZ";
+        var counter = 0;
+
+        foreach (var task in menuItems)
+        {
+            System.Console.WriteLine($"{alphabet.Substring(counter, 1)} = {task}");
+            counter++;
+        };
+
+        System.Console.WriteLine($"{ConsoleKey.Q} = Quit.");
+
+        var output = System.Console.ReadKey(true);
+        return output;
+    }
+
+
+    /// <summary>
     /// Writes a list of taks prefixed by follow-up letter from the 
     /// alpabet.  Q is preserved for quitting.
     /// </summary>
     /// <param name="taskList"></param>
     /// <returns></returns>
+    [Obsolete("Use write menu instead.")]
     public ConsoleKeyInfo WriteTaskList(List<string> taskList)
     {
+        if (taskList.Count > 25)
+        {
+            WriteError("Tasklist can contain upto 25 taks maximum.");
+        }
+
         var alphabet = "ABCDEFGHIJKLMOPRSTUVWXYZ";
 
         var counter = 0;
@@ -170,5 +189,38 @@ public class ConsoleHelpers
 
         var output = System.Console.ReadKey(true);
         return output;
+    }
+
+
+    /// <summary>
+    /// Write a message in green, followed by an empty line.
+    /// </summary>
+    /// <param name="message"></param>
+    [Obsolete("Use WriteSuccess<T> instead.")]
+    public void WriteResult(string? message)
+    {
+        var originalColor = System.Console.ForegroundColor;
+
+        System.Console.WriteLine("Result:");
+        System.Console.ForegroundColor = ConsoleColor.DarkGreen;
+        System.Console.WriteLine(message);
+        System.Console.WriteLine();
+        System.Console.ForegroundColor = originalColor;
+    }
+
+
+    /// <summary>
+    /// Writes a Exception in red, followed by an empty line.
+    /// </summary>
+    /// <param name="ex"></param>
+    [Obsolete("Use generic method WriteError<T> instead.")]
+    public void WriteError(Exception ex)
+    {
+        var originalColor = System.Console.ForegroundColor;
+
+        System.Console.ForegroundColor = ConsoleColor.Red;
+        System.Console.WriteLine(WriteJson(ex));
+        System.Console.WriteLine();
+        System.Console.ForegroundColor = originalColor;
     }
 }

@@ -2,9 +2,9 @@
 
 namespace Ekzakt.Templates.Console;
 
-public class TaskRunner(ConsoleHelpers? c)
+public class TaskRunner(ConsoleHelpers c)
 {
-    public async Task DoSomething()
+    public async Task DoSomethingAsync()
     {
         c.Clear();
 
@@ -13,7 +13,7 @@ public class TaskRunner(ConsoleHelpers? c)
             c.WriteError("WriteError");
             c.WriteSuccess("WriteSuccess");
 
-            c.Write($"Doing '{nameof(DoSomething)}'.");
+            c.Write($"Doing '{nameof(DoSomethingAsync)}'.");
             c.Write();
 
             if (!c.ConfirmYesNo("Would you like to try again?")) break;
