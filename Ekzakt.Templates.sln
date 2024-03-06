@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ekzakt.Templates.Console.Ut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ekzakt.Templates.Console", "Ekzakt.Templates.Console\Ekzakt.Templates.Console.csproj", "{CFF5EB3E-119E-418C-BD5A-FFCF5898B603}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ekzakt.Templates.Classes", "Ekzakt.Templates.Classes\Ekzakt.Templates.Classes.csproj", "{24F78966-E33B-41DB-A837-E7DD404AADA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CFF5EB3E-119E-418C-BD5A-FFCF5898B603}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFF5EB3E-119E-418C-BD5A-FFCF5898B603}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFF5EB3E-119E-418C-BD5A-FFCF5898B603}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F78966-E33B-41DB-A837-E7DD404AADA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F78966-E33B-41DB-A837-E7DD404AADA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F78966-E33B-41DB-A837-E7DD404AADA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F78966-E33B-41DB-A837-E7DD404AADA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

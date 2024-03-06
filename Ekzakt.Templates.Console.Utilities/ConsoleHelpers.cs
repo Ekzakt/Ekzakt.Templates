@@ -30,13 +30,28 @@ public class ConsoleHelpers
     /// <summary>
     /// Writes a Exception in red, followed by an empty line.
     /// </summary>
-    /// <param name="obj">Beneric</param>
+    /// <param name="obj">Generic</param>
     public void WriteError<T>(T obj) where T : class
     {
         var originalColor = System.Console.ForegroundColor;
 
         System.Console.ForegroundColor = ConsoleColor.Red;
         System.Console.WriteLine(WriteJson(obj));
+        System.Console.WriteLine();
+        System.Console.ForegroundColor = originalColor;
+    }
+
+
+    /// <summary>
+    /// Writes a Exception in red, followed by an empty line.
+    /// </summary>
+    /// <param name="error">string</param>
+    public void WriteError(string error)
+    {
+        var originalColor = System.Console.ForegroundColor;
+
+        System.Console.ForegroundColor = ConsoleColor.Red;
+        System.Console.WriteLine(error);
         System.Console.WriteLine();
         System.Console.ForegroundColor = originalColor;
     }
@@ -57,21 +72,23 @@ public class ConsoleHelpers
     }
 
 
-
     /// <summary>
     /// Ask for a confirmation, yes or no. 
     /// Only allows ConsoleKey.Y or ConsoleKey.N.
     /// </summary>
     /// <param name="message"></param>
     /// <returns></returns>
-    public bool ConfirmYesNo(string? message = "")
+    public bool ConfirmYesNo(string? message = "", bool clearConsole = false)
     {
         while (true)
         {
             System.Console.WriteLine($"{message} (Y)es (N)o");
             ConsoleKeyInfo yesNo = System.Console.ReadKey(true);
 
-            Clear();
+            if (clearConsole)
+            {
+                Clear();
+            }
 
             if (yesNo.Key == ConsoleKey.N || yesNo.Key == ConsoleKey.Y)
             {
@@ -126,9 +143,9 @@ public class ConsoleHelpers
     /// <returns></returns>
     public ConsoleKeyInfo WriteMenu(List<string> menuItems, string? title = null)
     {
-        if (menuItems.Count > 25)
+        if (menuItems.Count > 26)
         {
-            WriteError("A maximum of 25 menu items are allowed.");
+            WriteError("A maximum of 26 menu items are allowed.");
         }
 
         System.Console.Clear();
@@ -143,7 +160,7 @@ public class ConsoleHelpers
             System.Console.ForegroundColor = previousColor;
         }
 
-        var alphabet = "ABCDEFGHIJKLMOPRSTUVWXYZ";
+        var alphabet = "ABCDEFGHIJKLMOPQRSTUVWXYZ";
         var counter = 0;
 
         foreach (var task in menuItems)
@@ -151,8 +168,6 @@ public class ConsoleHelpers
             System.Console.WriteLine($"{alphabet.Substring(counter, 1)} = {task}");
             counter++;
         };
-
-        System.Console.WriteLine($"{ConsoleKey.Q} = Quit.");
 
         var output = System.Console.ReadKey(true);
         return output;

@@ -32,7 +32,7 @@ while (true)
             break;
     }
 
-    if (key.Key.Equals(ConsoleKey.Q))
+    if (key.Key.Equals(ConsoleKey.Escape))
     {
         break;
     }
