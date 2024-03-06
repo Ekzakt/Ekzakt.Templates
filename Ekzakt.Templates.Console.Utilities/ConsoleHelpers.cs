@@ -83,16 +83,16 @@ public class ConsoleHelpers
         while (true)
         {
             System.Console.WriteLine($"{message} (Y)es (N)o");
-            ConsoleKeyInfo yesNo = System.Console.ReadKey(true);
+            ConsoleKeyInfo yesNoCancel = System.Console.ReadKey(true);
 
             if (clearConsole)
             {
                 Clear();
             }
 
-            if (yesNo.Key == ConsoleKey.N || yesNo.Key == ConsoleKey.Y)
+            if (yesNoCancel.Key == ConsoleKey.N || yesNoCancel.Key == ConsoleKey.Escape || yesNoCancel.Key == ConsoleKey.Y)
             {
-                return yesNo.Key == ConsoleKey.Y;
+                return yesNoCancel.Key == ConsoleKey.Y;
             }
         }
     }
