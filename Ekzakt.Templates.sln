@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ekzakt.Templates.Console.Ut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ekzakt.Templates.Console", "Ekzakt.Templates.Console\Ekzakt.Templates.Console.csproj", "{CFF5EB3E-119E-418C-BD5A-FFCF5898B603}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ekzakt.Templates.Classes", "Ekzakt.Templates.Classes\Ekzakt.Templates.Classes.csproj", "{24F78966-E33B-41DB-A837-E7DD404AADA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ekzakt.Templates.Classes", "Ekzakt.Templates.Classes\Ekzakt.Templates.Classes.csproj", "{24F78966-E33B-41DB-A837-E7DD404AADA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7CF9B9CD-9D48-4B99-8B9B-FB917537EF1E}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
