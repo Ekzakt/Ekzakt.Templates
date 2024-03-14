@@ -17,7 +17,9 @@ dotnet add package ...
 
 ### 2. Add the following settings to the appsettings.json file.
 ```json
-Json code here
+{
+  Json code here
+}
 ```
 
 
