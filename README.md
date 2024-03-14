@@ -2,7 +2,7 @@
 
 
 ## Description
-This repository contains projects that can serve as Microsoft Visual Studio project templates in the Ekzakt ecosystem.
+This repository contains projects that can serve as a base Microsoft Visual Studio project templates or individual files in the Ekzakt ecosystem.
 
 
 ## Installation
