@@ -24,7 +24,11 @@ Add settings in appsettings.json.
 ```
 
 
-### 2. Register the class in program.cs
+### 2. program.cs
+Register dependencies in program.cs.
+``` C#
+C# code here.
+```
 
 
 #### 1. Default
